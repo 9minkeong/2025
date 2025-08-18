@@ -67,7 +67,7 @@ st.divider()
 
 # -------------------- DATA --------------------
 foods = [
-    {"name":"김치찌개","emoji":"🥘","cuisine":"Korean","diet":"normal","spice":4,"price":"₩","kcal":480,"tags":["soup","rice","spicy"]},
+    {"name":"낙곱새","emoji":"🥘","cuisine":"Korean","diet":"normal","spice":4,"price":"₩","kcal":480,"tags":["soup","rice","spicy"]},
     {"name":"비빔밥","emoji":"🥗","cuisine":"Korean","diet":"vegetarian","spice":2,"price":"₩₩","kcal":550,"tags":["rice","veggie"]},
     {"name":"불고기","emoji":"🍖","cuisine":"Korean","diet":"normal","spice":1,"price":"₩₩₩","kcal":650,"tags":["meat","rice"]},
     {"name":"된장찌개","emoji":"🍲","cuisine":"Korean","diet":"normal","spice":1,"price":"₩","kcal":420,"tags":["soup","rice"]},
