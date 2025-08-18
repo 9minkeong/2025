@@ -107,8 +107,7 @@ col1, col2 = st.columns([1,2])
 with col1:
     st.image(char['img'], use_column_width=True, caption=selected)
     st.markdown(f"<div class='card small'><b class='key'>넨 유형</b>: {char['nen_type']}<br><b class='key'>소속</b>: {char['affiliation']}<br><b class='key'>첫등장</b>: {char['first_appearance']}</div>", unsafe_allow_html=True)
-    st.markdown("
-")
+    st.markdown("## 헌터헌터 인물 백과사전")
     if st.button("⭐ 즐겨찾기 추가"):
         if 'favs' not in st.session_state:
             st.session_state['favs'] = []
