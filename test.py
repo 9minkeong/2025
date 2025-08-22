@@ -1,9 +1,12 @@
 import streamlit as st
 
-st.title("💊 증상별 약 추천 & 관리법 앱")
+# 페이지 설정
+st.set_page_config(page_title="💊 증상별 약 추천", page_icon="💊", layout="wide")
+
+st.markdown("<h1 style='text-align:center; color:#4B0082;'>💊 증상별 약 추천 & 관리법</h1>", unsafe_allow_html=True)
 st.write("⚠️ 이 앱은 의료 참고용입니다. 정확한 진단은 반드시 의사·약사에게 받으세요.")
 
-# 증상-약-부작용-관리법-복용시간-이미지 데이터베이스
+# 증상-약-부작용-관리법-복용시간-이미지 데이터
 medicine_dict = {
     "두통": {
         "약": "진통제 (예: 타이레놀, 이부프로펜)",
@@ -43,13 +46,23 @@ medicine_dict = {
 }
 
 # 선택 박스
-symptom = st.selectbox("증상을 선택하세요", [""] + list(medicine_dict.keys()))
+symptom = st.selectbox("💡 증상을 선택하세요", [""] + list(medicine_dict.keys()))
 
-# 추천 결과
+# 결과 출력
 if symptom:
     info = medicine_dict[symptom]
-    st.success(f"👉 {symptom}에 권장되는 약: **{info['약']}**")
-    st.info(f"⚠️ 예상 부작용: {info['부작용']}")
-    st.warning(f"ℹ️ 생활 관리법: {info['관리법']}")
-    st.info(f"🕒 복용 시간: {info['복용시간']}")
-    st.image(info['이미지'], caption=f"{info['약']} 예시 이미지", use_column_width=True)
+    
+    # 2열 레이아웃: 왼쪽 이미지, 오른쪽 텍스트
+    col1, col2 = st.columns([1, 2])
+    
+    with col1:
+        st.image(info['이미지'], use_column_width=True)
+        
+    with col2:
+        st.markdown(f"<h2 style='color:#4B0082;'>{symptom}</h2>", unsafe_allow_html=True)
+        st.markdown(f"**💊 추천 약:** {info['약']}")
+        st.markdown(f"**⚠️ 예상 부작용:** {info['부작용']}")
+        st.markdown(f"**📝 생활 관리법:** {info['관리법']}")
+        st.markdown(f"**🕒 복용 시간:** {info['복용시간']}")
+    
+    st.markdown("---")
