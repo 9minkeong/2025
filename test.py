@@ -1,1 +1,56 @@
+import streamlit as st
+
+st.title("💊 증상별 약 추천 & 관리법 앱")
+st.write("⚠️ 이 앱은 의료 참고용입니다. 정확한 진단은 반드시 의사·약사에게 받으세요.")
+
+# 증상-약-부작용-관리법-이미지-복용시간 데이터베이스
+medicine_dict = {
+    "두통": {
+        "약": "진통제 (예: 타이레놀, 이부프로펜)",
+        "부작용": "속쓰림, 위장 장애",
+        "관리법": "충분한 수분 섭취, 눈 휴식, 규칙적인 수면",
+        "이미지": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Paracetamol_500mg_pills.jpg",
+        "복용시간": "증상 발생 시, 하루 최대 4회"
+    },
+    "발열": {
+        "약": "해열제 (예: 아세트아미노펜, 이부프로펜)",
+        "부작용": "간 손상(과량 복용 시), 위장 장애",
+        "관리법": "충분한 수분 섭취, 가벼운 옷 착용, 휴식",
+        "이미지": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Ibuprofen_pills.jpg",
+        "복용시간": "6~8시간 간격으로 필요 시 복용"
+    },
+    "기침": {
+        "약": "진해제, 거담제 (예: 덱스트로메토르판, 암브록솔)",
+        "부작용": "졸림, 어지럼증",
+        "관리법": "따뜻한 음료 섭취, 실내 습도 유지",
+        "이미지": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Cough_syrup.jpg",
+        "복용시간": "하루 2~3회, 필요 시 복용"
+    },
+    "속쓰림": {
+        "약": "제산제, 위산 억제제 (예: 라니티딘, 오메프라졸)",
+        "부작용": "설사, 변비",
+        "관리법": "카페인, 기름진 음식 피하기, 식사 후 바로 눕지 않기",
+        "이미지": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Omeprazole_drug.jpg",
+        "복용시간": "식사 30분 전 또는 저녁 취침 전"
+    },
+    "근육통": {
+        "약": "진통·소염제 (예: 이부프로펜, 나프록센), 파스",
+        "부작용": "위장 장애, 피부 자극",
+        "관리법": "적절한 스트레칭, 온찜질 또는 휴식",
+        "이미지": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Naproxen_tablets.jpg",
+        "복용시간": "증상 발생 시, 하루 최대 3~4회"
+    }
+}
+
+# 증상 선택
+symptom = st.selectbox("증상을 선택하세요", [""] + list(medicine_dict.keys()))
+
+# 추천 결과
+if symptom:
+    info = medicine_dict[symptom]
+    st.success(f"👉 {symptom}에 권장되는 약: **{info['약']}**")
+    st.info(f"⚠️ 예상 부작용: {info['부작용']}")
+    st.warning(f"ℹ️ 생활 관리법: {info['관리법']}")
+    st.info(f"🕒 복용 시간: {info['복용시간']}")
+    st.image(info['이미지'], caption=f"{info['약']} 예시 이미지", use_column_width=True)
 
